@@ -96,7 +96,7 @@ public class Course {
         }
 
         int index = findStudentIndex(student);
-
+        // if the student is not on the roster or waitlist, the student cannot be removed
         if (index == -1) {
             return false;
         }
