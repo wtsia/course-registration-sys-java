@@ -46,6 +46,17 @@ public class Student {
 	public String toString() {
 		return firstName + " " + lastName + " (" + id + ")";
 	}
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		Student student = (Student) obj;
+		return id.equals(student.id) &&
+				tuitionPaid == student.tuitionPaid &&
+				firstName.equalsIgnoreCase(student.firstName) &&
+				lastName.equalsIgnoreCase(student.lastName);
 	
+	}
 }
