@@ -30,6 +30,10 @@ public class Course {
         return maxRosterSize;
     }
 
+    public void setMaxRosterSize(int rosterSize) {
+        this.maxRosterSize = rosterSize;
+    }
+
     public int getMaxWaitlistSize() {
         return maxWaitlistSize;
     }
