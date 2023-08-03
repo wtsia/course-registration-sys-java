@@ -2,7 +2,7 @@
 
 |AUTHORS|
 |:-:|
-| [Jaime Pastelero](https://github.com/jaimepasta), Winston Tsia [wtsia](https://github.com/wtsia) |
+| [Jaime Pastelero](https://github.com/jaimepasta), [Winston Tsia](https://github.com/wtsia) |
 
 A program utilizing concepts in Classes and Objects. This program implements a Course Enrollment System in Java. The `Course` class allows you to keep track of students enrolled in a course (on the roster) and students on the waitlist for the course. It provides functionalities to add and drop students from the roster and waitlist based on specific conditions.
 
