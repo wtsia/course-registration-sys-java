@@ -11,20 +11,26 @@ public class Main {
             scanner.nextLine();  
 
             if (choice == 1) {
-                System.out.println("Enter student ID, first name, last name, and tuition paid status (true or false)");
+                System.out.println("Enter the first name:");
+                String firstName = scanner.nextLine();
+                
+                System.out.println("Enter the last name:");
+                String lastName = scanner.nextLine();
+
                 String id;
                 while (true) {
+                    System.out.println("Enter the ID number:");
                     id = scanner.nextLine();
                     if (id.matches("\\d+")) {  
                         break;
                     } else {
-                        System.out.println("Invalid input. Student ID should be a number.");
+                        System.out.println("Invalid input. ID number should be a number.");
                     }
                 }
-                String firstName = scanner.nextLine();
-                String lastName = scanner.nextLine();
-                boolean tuitionPaid = scanner.nextBoolean();
-                scanner.nextLine();  
+
+                System.out.println("Has the student paid tuition? Enter Y or N");
+                boolean tuitionPaid = scanner.nextLine().equalsIgnoreCase("Y") ? true : false;
+                
                 Student newStudent = new Student(firstName, lastName, id, tuitionPaid);
 
                 if (course.addStudent(newStudent)) {
@@ -34,15 +40,10 @@ public class Main {
                 }
 
             } else if (choice == 2) {
-                System.out.println("Enter student information to drop");
+                System.out.println("Enter the ID of student to drop");
                 String id = scanner.nextLine();
-                String firstName = scanner.nextLine();
-                String lastName = scanner.nextLine();
-                boolean tuitionPaid = scanner.nextBoolean();
-                scanner.nextLine();  // Consume newline left-over
-                Student student = new Student(firstName, lastName, id, tuitionPaid);
 
-                if (course.dropStudent(student)) {
+                if (course.dropStudent(id)) {
                     System.out.println("Student dropped successfully.");
                 } else {
                     System.out.println("Failed to drop student.");
