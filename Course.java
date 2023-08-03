@@ -90,13 +90,13 @@ public class Course {
     }
 
     // dropStudent method
-    public boolean dropStudent(Student student) {
-        if (student == null) {
+    public boolean dropStudent(String id) {
+        if (id == null || id.isEmpty()) {
             return false;
         }
 
-        int index = findStudentIndex(student);
-        // if the student is not on the roster or waitlist, the student cannot be removed
+        int index = findStudentIndexById(id);
+
         if (index == -1) {
             return false;
         }
@@ -134,19 +134,20 @@ public class Course {
     }
 
     // Helper method to find the index of a student in the roster or waitlist
-    private int findStudentIndex(Student student) {
+    private int findStudentIndexById(String id) {
         for (int i = 0; i < rosterSize; i++) {
-            if (roster[i] != null && roster[i].equals(student)) {
+            if (roster[i] != null && roster[i].getID().equals(id)) {
                 return i;
             }
         }
         for (int i = 0; i < waitlistSize; i++) {
-            if (waitlist[i] != null && waitlist[i].equals(student)) {
+            if (waitlist[i] != null && waitlist[i].getID().equals(id)) {
                 return i + rosterSize;
             }
         }
         return -1;
     }
+
 
     // Helper method to remove a student from the roster
     private void removeStudentFromRoster(int index) {
