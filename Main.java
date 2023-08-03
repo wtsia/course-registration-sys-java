@@ -21,10 +21,10 @@ public class Main {
                 while (true) {
                     System.out.println("Enter the ID number:");
                     id = scanner.nextLine();
-                    if (id.matches("\\d+")) {  
+                    if (id.matches("\\w+") && !id.isEmpty()) {  
                         break;
                     } else {
-                        System.out.println("Invalid input. ID number should be a number.");
+                        System.out.println("Invalid input. ID number needs to be inputted.");
                     }
                 }
 
