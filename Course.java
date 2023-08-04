@@ -46,13 +46,12 @@ public class Course {
         return waitlistSize;
     }
 
-    // addStudent method
     public boolean addStudent(Student student) {
         if (student == null || !student.isTuitionPaid()) {
             return false;
         }
 
-        if (isEnrolled(student) || isWaitlisted(student)) {
+        if (isEnrolled(student)) {
             return false;
         }
 
@@ -98,10 +97,6 @@ public class Course {
                 return true;
             }
         }
-        return false;
-    }
-
-    private boolean isWaitlisted(Student student) {
         for (int i = 0; i < waitlistSize; i++) {
             if (waitlist[i] != null && waitlist[i].equals(student)) {
                 return true;

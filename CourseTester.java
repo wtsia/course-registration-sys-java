@@ -24,7 +24,7 @@ public static void main(String[] args) {
 		//CourseAL course = new CourseAL("Media Studies", 5, 5);
 		
 		/* note: to test the extra credit, replace the line above with the line below.  
-		 * the rest of the program should run exactly the same.
+		 * the rest of the program should run exactly the same.p[]
 		 * 
 		 * CourseAL course = new CourseAL("Media Studies", 5, 5);
 		 * 
