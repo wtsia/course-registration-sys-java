@@ -21,6 +21,7 @@ public static void main(String[] args) {
 		studentsInSchool[14] = new Student("Walt", "Whitman", "S901", true);	
 		
 		Course course = new Course("Media Studies", 5, 5);
+		//CourseAL course = new CourseAL("Media Studies", 5, 5);
 		
 		/* note: to test the extra credit, replace the line above with the line below.  
 		 * the rest of the program should run exactly the same.

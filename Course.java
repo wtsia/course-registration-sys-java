@@ -17,62 +17,27 @@ public class Course {
         this.waitlistSize = 0;
     }
 
-    // Getters and setters
     public String getCourseName() {
         return courseName;
     }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
     public int getMaxRosterSize() {
         return maxRosterSize;
     }
-
     public void setMaxRosterSize(int rosterSize) {
         this.maxRosterSize = rosterSize;
     }
-
+    public int getRosterSize() {
+        return rosterSize;
+    }
+    public int getWaitlistSize() {
+        return waitlistSize;
+    }
     public int getMaxWaitlistSize() {
         return maxWaitlistSize;
     }
 
-    public int getRosterSize() {
-        return rosterSize;
-    }
-
-    public int getWaitlistSize() {
-        return waitlistSize;
-    }
-
-    // toString method
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(courseName).append("\n");
-        sb.append(rosterSize).append(" enrolled (maximum allowed ").append(maxRosterSize).append(")\n");
-        for (int i = 0; i < rosterSize; i++) {
-            if (roster[i] != null) {
-                sb.append(roster[i]).append("\n");
-            }
-        }
-        sb.append(waitlistSize).append(" on waitlist (maximum allowed ").append(maxWaitlistSize).append("):\n");
-        for (int i = 0; i < waitlistSize; i++) {
-            if (waitlist[i] != null) {
-                sb.append(waitlist[i]).append("\n");
-            }
-        }
-        return sb.toString();
-    }
-
-    // addStudent method
     public boolean addStudent(Student student) {
-        if (student == null || !student.isTuitionPaid()) {
-            return false;
-        }
-
-        if (isEnrolled(student) || isWaitlisted(student)) {
+        if (student == null || !student.isTuitionPaid() || isEnrolled(student) || isWaitlisted(student)) {
             return false;
         }
 
@@ -89,7 +54,6 @@ public class Course {
         }
     }
 
-    // dropStudent method
     public boolean dropStudent(String id) {
         if (id == null || id.isEmpty()) {
             return false;
@@ -113,7 +77,7 @@ public class Course {
         return true;
     }
 
-    // Helper method to check if a student is already on the roster
+    // Helper Methods
     private boolean isEnrolled(Student student) {
         for (int i = 0; i < rosterSize; i++) {
             if (roster[i] != null && roster[i].equals(student)) {
@@ -123,7 +87,6 @@ public class Course {
         return false;
     }
 
-    // Helper method to check if a student is already on the waitlist
     private boolean isWaitlisted(Student student) {
         for (int i = 0; i < waitlistSize; i++) {
             if (waitlist[i] != null && waitlist[i].equals(student)) {
@@ -133,7 +96,6 @@ public class Course {
         return false;
     }
 
-    // Helper method to find the index of a student in the roster or waitlist
     private int findStudentIndexById(String id) {
         for (int i = 0; i < rosterSize; i++) {
             if (roster[i] != null && roster[i].getID().equals(id)) {
@@ -148,8 +110,6 @@ public class Course {
         return -1;
     }
 
-
-    // Helper method to remove a student from the roster
     private void removeStudentFromRoster(int index) {
         for (int i = index; i < rosterSize - 1; i++) {
             roster[i] = roster[i + 1];
@@ -158,7 +118,6 @@ public class Course {
         rosterSize--;
     }
 
-    // Helper method to remove a student from the waitlist
     private void removeStudentFromWaitlist(int index) {
         for (int i = index; i < waitlistSize - 1; i++) {
             waitlist[i] = waitlist[i + 1];
@@ -167,10 +126,28 @@ public class Course {
         waitlistSize--;
     }
 
-    // Helper method to add a student from the waitlist to the roster
     private void addStudentFromWaitlistToRoster() {
         roster[rosterSize] = waitlist[0];
         rosterSize++;
         removeStudentFromWaitlist(0);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(courseName).append("\n");
+        sb.append(rosterSize).append(" enrolled (maximum allowed ").append(maxRosterSize).append(")\n");
+        for (int i = 0; i < rosterSize; i++) {
+            if (roster[i] != null) {
+                sb.append(roster[i]).append("\n");
+            }
+        }
+        sb.append(waitlistSize).append(" on waitlist (maximum allowed ").append(maxWaitlistSize).append("):\n");
+        for (int i = 0; i < waitlistSize; i++) {
+            if (waitlist[i] != null) {
+                sb.append(waitlist[i]).append("\n");
+            }
+        }
+        return sb.toString();
     }
 }
